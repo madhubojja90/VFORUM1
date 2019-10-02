@@ -59,7 +59,7 @@ int empid=(Integer) request.getAttribute("empid");
   <a href="addQuestion.jsp">addQuestion</a>
   <a href="EmpEditServlet">profile</a>
     <a href="MyQuestion.jsp">myquestions</a>
-  <a href="ViewQuestion.jsp">View Questions</a>
+  <a href="ViewQuestion1.jsp">View Questions</a>
 
   <a href="EmpLogoutServlet">Logout</a>
  

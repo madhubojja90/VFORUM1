@@ -13,7 +13,7 @@
 <%@page import="com.vir.model.*,com.vir.service.*,java.util.*"%>  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
   
-<h1>Question List</h1>  
+<h1><center>Question List</center></h1>  
   
 <%  
 QuestionServiceInterface qs= new QuestionInterfaceImpl();
