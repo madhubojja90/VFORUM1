@@ -24,16 +24,20 @@ public class UpdateQuestionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
-		int empid=Integer.parseInt(request.getParameter("empid"));
-		int qid=Integer.parseInt(request.getParameter("qid"));
+	//int empid=Integer.parseInt(request.getParameter("empid"));
+	int qid=Integer.parseInt(request.getParameter("qid"));
 		String qdesc=request.getParameter("qdesc");
 		Question e=new Question();
 		e.setQid(qid);
-		e.setEmpid(empid);
+		//e.setEmpid(empid);
 		e.setQdesc(qdesc);
+		
 		QuestionServiceInterface qs= new QuestionInterfaceImpl();
+		
 		int status=qs.update(e);
+		
 		if(status>0){
+			out.print("updated");
 			response.sendRedirect("ViewQuestionServlet");
 		}else{
 			out.println("Sorry! unable to update record");

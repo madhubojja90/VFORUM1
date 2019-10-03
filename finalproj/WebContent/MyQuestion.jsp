@@ -6,15 +6,16 @@
 <title>View Questions</title>
 </head>
 <body>
+<%@include  file="ProfileHome.html" %>
+
 
 	<%@page import="com.vir.model.*,com.vir.service.*,java.util.*"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-	<h1>answer List</h1>
-	<%
+	<h1>Question List</h1>
+	< <%
 		int empid = (Integer) session.getAttribute("empid");
-	%>
-
+	%> 
 	<%
 		QuestionServiceInterface qs = new QuestionInterfaceImpl();
 
@@ -25,7 +26,7 @@
 
 
 	<table border="1" width="90%">
-		<tr bgcolor="red">
+		<tr>
 			<th>qid</th>
 			
 			<th>qdesc</th>
@@ -36,7 +37,7 @@
 				<td>${u.getQid()}</td>
 				
 				<td>${u.getQdesc()}</td>
-				<td><a href="EditQuestionServlet?qid=${u.getQid()}">Edit</a></td>
+				<td><a href="EditMyQuestionServlet?qid=${u.getQid()}">Edit</a></td>
 		</c:forEach>
 	</table>
 	<br />

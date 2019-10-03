@@ -22,7 +22,7 @@ public class DBConnection {
 	 e.printStackTrace();
 	 }
 	 
-	  con=DriverManager.getConnection("jdbc:mysql://localhost:3306/vforum","root","root");   
+	  con=DriverManager.getConnection("jdbc:mysql://localhost:3306/vforum","root","system");   
 	 
 	 } 
 	 catch (Exception e) 

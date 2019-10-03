@@ -29,8 +29,8 @@ public class EditMyQuestionServlet extends HttpServlet {
         
          int qid=(Integer) session.getAttribute("qid"); 
          QuestionServiceInterface qs= new QuestionInterfaceImpl();
-        Question e=qs.getEmployeeById(qid);
-		
+       // Question e=qs.getEmployeeById(qid);
+        Question e=qs.getQuestionByEmpid(qid);
         
         
      
@@ -39,8 +39,8 @@ public class EditMyQuestionServlet extends HttpServlet {
 		
 		
 		out.print("<table>");
-		out.print("<tr><td></td><td><input type='hidden' name='empid' value='"+e.getEmpid()+"'/></td></tr>");
-		out.print("<tr><td>Name:</td><td><input type='text' name='fullname' value='"+e.getQdesc()+"'/></td></tr>");
+		out.print("<tr><td></td><td><input type='hidden' name='qid' value='"+e.getQid()+"'/></td></tr>");
+		out.print("<tr><td>qdesc:</td><td><textarea rows='5' cols='80'>"+e.getQdesc()+"</textarea></td></tr>");
 	//	out.print("<tr><td>email:</td><td><input type='email' name='email' value='"+e.getEmail()+"'/></td></tr>");
 		
 		out.print("<tr><td colspan='2'><input type='submit' value='Edit &amp; Save '/></td></tr>");

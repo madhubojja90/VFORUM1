@@ -19,8 +19,9 @@ public class AddQuestionServlet extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");  
 		PrintWriter out=response.getWriter();
-		request.getRequestDispatcher("ProfileHome.html").include(request, response);  
-		HttpSession session=request.getSession(false);  
+		//request.getRequestDispatcher("ProfileHome.html").include(request, response);  
+		HttpSession session=request.getSession(false); 
+		
 		if(session!=null){  
 
 			int empid=(Integer) session.getAttribute("empid"); 
@@ -40,7 +41,9 @@ public class AddQuestionServlet extends HttpServlet
 		
 		if(userRegistered.equals("SUCCESS"))   
 		{
-			out.print("<p>Record saved successfully!</p>");  
+			//out.print("alert(<p>Record inserted Successfully</p>"); 
+			request.setAttribute("message", "Record inserted Successfully");
+			
 			request.getRequestDispatcher("addQuestion.jsp").include(request, response); 
 		}
 		else   

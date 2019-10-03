@@ -78,10 +78,10 @@ public class QuestionDaoImpl implements QuestionDaoInterface
 		  int status=0;
 		try{
 			con = DBConnection.createConnection();
-			PreparedStatement ps=con.prepareStatement("update question set empid=?,qdesc=? where qid=?");
-			ps.setInt(1,question.getEmpid());
-			ps.setString(2,question.getQdesc());
-			ps.setInt(3,question.getQid());
+			PreparedStatement ps=con.prepareStatement("update question set qdesc=? where qid=?");
+			
+			ps.setString(1,question.getQdesc());
+			ps.setInt(2,question.getQid());
 			
 			status=ps.executeUpdate();
 			
@@ -133,7 +133,7 @@ List<Question> list=new ArrayList<Question>();
         
         try{  
         	Connection con = DBConnection.createConnection(); 
-            PreparedStatement ps=con.prepareStatement("select qid,qdesc  question where empid=?");  
+            PreparedStatement ps=con.prepareStatement("select * from vforum.question where empid=?");  
             ps.setInt(1, empid);
             ResultSet rs=ps.executeQuery();  
             while(rs.next()){  
@@ -143,7 +143,7 @@ List<Question> list=new ArrayList<Question>();
             	question.setQdesc(rs.getString(3));
                 list.add(question);  
             }
-            con.commit();
+           
             con.close();  
         }catch(Exception e){e.printStackTrace();}  
         return list;

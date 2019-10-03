@@ -5,6 +5,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+
 import com.vir.model.Employee;
 import com.vir.service.EmployeeService;
 import com.vir.service.EmployeeServiceImpl;
@@ -13,6 +16,7 @@ import com.vir.service.EmployeeServiceImpl;
 
 public class EmpRegisterServlet extends HttpServlet 
 {
+	  private static final Logger log=Logger.getRootLogger();
 	private static final long serialVersionUID = 1L;
 
 	public EmpRegisterServlet() {

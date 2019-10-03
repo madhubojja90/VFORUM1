@@ -24,7 +24,7 @@ public class EmployeeDao implements EmployeeDaoInterface {
 
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
-		String query = " insert into employee (empid, empname, email, username, password)"
+		String query = " insert into employee (empid, ename, email, username, password)"
 		        + " values (?, ?, ?, ?, ?)";
 
 		try  

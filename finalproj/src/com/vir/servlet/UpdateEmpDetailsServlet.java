@@ -42,8 +42,11 @@ public class UpdateEmpDetailsServlet extends HttpServlet {
 
 		int status=es.updateEmp(employee);
 		if(status>0){
-			out.println("updated");
+			 request.getRequestDispatcher("/Tab.jsp").include(request, response);
+			out.println("update successfully");
+			
 		}else{
+			 request.getRequestDispatcher("/Tab.jsp").include(request, response);
 			out.println("Sorry! unable to update record");
 		}
 		

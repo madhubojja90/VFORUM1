@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -126,14 +127,14 @@ button:hover {
   </label>
    <label>
     <p class="label-txt">ENTER YOUR PASSWORD</p>
-    <input type="text"  name="password" class="input">
+    <input type="password"  name="password" class="input">
     <div class="line-box">
       <div class="line"></div>
     </div>
   </label>
    <label>
     <p class="label-txt">CONFIRM PASSWORD</p>
-    <input type="text"   name="conpassword" class="input">
+    <input type="password"   name="conpassword" class="input" required>
     <div class="line-box">
       <div class="line"></div>
     </div>
@@ -193,11 +194,12 @@ else if (Empid.length<7 )
 alert("enter valid employee id"); 
 return false; 
 }
-else if(password.length<6)
+else if (password!=conpassword)
 { 
-alert("Password must be at least 6 characters long."); 
+alert("Confirm Password should match with the Password"); 
 return false; 
 } 
+alert("Registred Successfully");
 } 
 </script>
 </body>
