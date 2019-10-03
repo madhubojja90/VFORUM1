@@ -1,8 +1,8 @@
-
 package com.vir.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.vir.model.Employee;
 import com.vir.model.Question;
-
 import com.vir.service.QuestionInterfaceImpl;
 import com.vir.service.QuestionServiceInterface;
 @WebServlet("/EditMyQuestionServlet")
@@ -21,34 +19,44 @@ public class EditMyQuestionServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
-		request.getRequestDispatcher("ProfileHome.html").include(request, response);  
+		out.println("<h1>Update question</h1>");
 		
-		out.println("<h1>Question </h1>");
-		HttpSession session=request.getSession(false);  
-        if(session!=null){  
-        
-         int qid=(Integer) session.getAttribute("qid"); 
-         QuestionServiceInterface qs= new QuestionInterfaceImpl();
-       // Question e=qs.getEmployeeById(qid);
-        Question e=qs.getQuestionByEmpid(qid);
-        
-        
-     
-        
-		out.print("<form action='UpdateQuestionServlet' method='post'>");
+		String sid=request.getParameter("qid");
+
+		int qid=Integer.parseInt(sid);
+		QuestionServiceInterface qs= new QuestionInterfaceImpl();
+		Question e=qs.getEmployeeById(qid);
+		
+		HttpSession session=request.getSession();
+		session.setAttribute("qid",qid); 
+		session.setAttribute("details",e);
+		
+		request.setAttribute("qid",qid); 
+		request.setAttribute("info",e);
+		RequestDispatcher rd=request.getRequestDispatcher("UpdateMyQuestion.jsp");
+		rd.forward(request, response);
 		
 		
+		/*out.print("<form action='UpdateQuestionServlet' method='post'>");
 		out.print("<table>");
 		out.print("<tr><td></td><td><input type='hidden' name='qid' value='"+e.getQid()+"'/></td></tr>");
+		out.print("<tr><td>empid:</td><td><input type='number' name='empid' value='"+e.getEmpid()+"' readonly/></td></tr>");
 		out.print("<tr><td>qdesc:</td><td><textarea rows='5' cols='80'>"+e.getQdesc()+"</textarea></td></tr>");
-	//	out.print("<tr><td>email:</td><td><input type='email' name='email' value='"+e.getEmail()+"'/></td></tr>");
+		out.print("<br>");
+		out.print("<br>");
 		
-		out.print("<tr><td colspan='2'><input type='submit' value='Edit &amp; Save '/></td></tr>");
 		out.print("</table>");
 		out.print("</form>");
 		
+		out.print("<form action='AddAnswer.jsp' method='post'>");
+		out.print("<tr><td colspan='2'><input type='submit' value='Add Answer '/></td></tr>");
+		
+		out.print("</form>");
+		
+		
 	
+	     out.print("<a href='ViewAllAnswers'>view answers</a>");  */
+		
 		out.close();
 	}
-}
 }

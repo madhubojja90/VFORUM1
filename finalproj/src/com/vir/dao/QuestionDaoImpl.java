@@ -86,6 +86,7 @@ public class QuestionDaoImpl implements QuestionDaoInterface
 			status=ps.executeUpdate();
 			
 			con.close();
+			
 		}catch(Exception ex){ex.printStackTrace();}
 		
 		return status;
